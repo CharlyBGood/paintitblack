@@ -3,6 +3,7 @@
 body {
     background-color: #000;
     color: #cdd;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .canvas_box {
@@ -24,5 +25,6 @@ body {
 
 p {
     text-align: center;
+    font-size: 1em;
 }
 

@@ -1,23 +1,23 @@
 let canvas = document.getElementById("area");
 let lienzo = canvas.getContext("2d");
 
-canvas.addEventListener("mousedown", pulsarMouse);
-canvas.addEventListener("mouseup", levantarMouse);
-canvas.addEventListener("mousemove", moverMouse);
+canvas.addEventListener("pointerdown", pulsarMouse);
+canvas.addEventListener("pointerup", levantarMouse);
+canvas.addEventListener("pointermove", moverMouse);
 let color = document.getElementById("color_select");
-let estado;
+let stage;
 let x;
 let y;
 
 function pulsarMouse(e) {
-    console.log("clickeaste el mouse dentro del canvas");
-    estado = 1;
+    // console.log("clickeaste el mouse dentro del canvas");
+    stage = 1;
     x = e.layerX;
     y = e.layerY;    
 }
 
 function moverMouse(e) {
-    if (estado == 1) {        
+    if (stage == 1) {        
         dibujarLinea(color.value, x, y, e.layerX, e.layerY, lienzo);
     } 
     x = e.layerX;
@@ -25,7 +25,7 @@ function moverMouse(e) {
 }
 
 function levantarMouse(e) {
-    estado = 0;    
+    stage = 0;    
 }
 
 function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo) {
