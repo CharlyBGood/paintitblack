@@ -1,0 +1,28 @@
+
+
+body {
+    background-color: #000;
+    color: #cdd;
+}
+
+.canvas_box {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+#color_select {
+    background-color: #000;
+    border: none;
+}
+
+#area {
+    margin: 1em .5em;
+    border: 1px solid #cdd;
+}
+
+p {
+    text-align: center;
+}
+
