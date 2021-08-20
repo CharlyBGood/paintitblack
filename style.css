@@ -20,14 +20,17 @@ body {
 #color_select {
     background-color: #000;
     border: none;
+    margin: 1em auto;
+    padding: 0 .3em;
 }
 
 #area {
     margin: 1em .5em;
     border: 1px solid #cdd;
+    border-radius: 1em 12em;
 }
 
-p {
+.intro {
     text-align: center;
     font-size: 1em;
 }
