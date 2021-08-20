@@ -1,5 +1,5 @@
 let canvas = document.getElementById("area");
-let lienzo = canvas.getContext("2d");
+let paper = canvas.getContext("2d");
 
 canvas.addEventListener("pointerdown", pulsarMouse);
 canvas.addEventListener("pointerup", levantarMouse);
@@ -18,7 +18,7 @@ function pulsarMouse(e) {
 
 function moverMouse(e) {
     if (stage == 1) {        
-        dibujarLinea(color.value, x, y, e.layerX, e.layerY, lienzo);
+        dibujarLinea(color.value, x, y, e.layerX, e.layerY, paper);
     } 
     x = e.layerX;
     y = e.layerY;
