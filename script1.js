@@ -1,3 +1,6 @@
+import * as test from './test.js';
+// test.text();
+
 let canvas = document.getElementById("area");
 let paper = canvas.getContext("2d");
 
@@ -6,7 +9,7 @@ canvas.addEventListener("pointerdown", mouseOn);
 canvas.addEventListener("pointermove", mouseMove);
 canvas.addEventListener("pointerup", mouseUp);
 
-let color = document.getElementById("color_select");
+// let color = document.getElementById("color_select");
 let stage;
 let x;
 let y;
@@ -19,7 +22,7 @@ function mouseOn(e) {
 
 function mouseMove(e) {
     if (stage == 1) {        
-        drawLine(color.value, x, y, e.layerX, e.layerY, paper);
+        drawLine(test.randHexColor(), x, y, e.layerX, e.layerY, paper);
     } 
     x = e.layerX;
     y = e.layerY;
@@ -32,7 +35,7 @@ function mouseUp(e) {
 function drawLine(color, xini, yini, xfin, yfin, paper) {
     paper.beginPath();
     paper.strokeStyle = color;
-    paper.lineWidth = 3;
+    paper.lineWidth = 2;
     paper.moveTo(xini, yini);
     paper.lineTo(xfin, yfin);
     paper.stroke();
