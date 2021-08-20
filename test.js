@@ -1,15 +1,3 @@
-// let j = 1;
-
-// function text() {
-//     if(j == 1) {
-//         alert('it works!!');
-//     }
-// }
-
-// export {j, text};
-
-//  -------------------------
-
 function randHexColor() {
     // new Array()
     let hexColor = [];
@@ -50,3 +38,4 @@ function randHexColor() {
 let colorH = randHexColor();
 
 export {randHexColor, colorH};
+
