@@ -1,39 +1,40 @@
 let canvas = document.getElementById("area");
 let paper = canvas.getContext("2d");
 
-canvas.addEventListener("pointerdown", pulsarMouse);
-canvas.addEventListener("pointerup", levantarMouse);
-canvas.addEventListener("pointermove", moverMouse);
+
+canvas.addEventListener("pointerdown", mouseOn);
+canvas.addEventListener("pointermove", mouseMove);
+canvas.addEventListener("pointerup", mouseUp);
+
 let color = document.getElementById("color_select");
 let stage;
 let x;
 let y;
 
-function pulsarMouse(e) {
-    // console.log("clickeaste el mouse dentro del canvas");
+function mouseOn(e) {
     stage = 1;
     x = e.layerX;
     y = e.layerY;    
 }
 
-function moverMouse(e) {
+function mouseMove(e) {
     if (stage == 1) {        
-        dibujarLinea(color.value, x, y, e.layerX, e.layerY, paper);
+        drawLine(color.value, x, y, e.layerX, e.layerY, paper);
     } 
     x = e.layerX;
     y = e.layerY;
 }
 
-function levantarMouse(e) {
+function mouseUp(e) {
     stage = 0;    
 }
 
-function dibujarLinea(color, xinicial, yinicial, xfinal, yfinal, lienzo) {
-    lienzo.beginPath();
-    lienzo.strokeStyle = color;
-    lienzo.lineWidth = 3;
-    lienzo.moveTo(xinicial, yinicial);
-    lienzo.lineTo(xfinal, yfinal);
-    lienzo.stroke();
-    lienzo.closePath();
+function drawLine(color, xini, yini, xfin, yfin, paper) {
+    paper.beginPath();
+    paper.strokeStyle = color;
+    paper.lineWidth = 3;
+    paper.moveTo(xini, yini);
+    paper.lineTo(xfin, yfin);
+    paper.stroke();
+    paper.closePath();
 }

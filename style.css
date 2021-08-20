@@ -8,14 +8,17 @@ body {
     background-color: #000;
     color: #cdd;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .canvas_box {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    width: 100%;
 }
+
+
 
 #color_select {
     background-color: #000;
@@ -27,7 +30,7 @@ body {
 #area {
     margin: 1em .5em;
     border: 1px solid #cdd;
-    border-radius: 1em 12em;
+    border-radius: 1em 7em;
 }
 
 .intro {
