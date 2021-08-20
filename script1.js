@@ -8,7 +8,15 @@ canvas.addEventListener("pointerdown", mouseOn);
 canvas.addEventListener("pointermove", mouseMove);
 canvas.addEventListener("pointerup", mouseUp);
 
+// canvas.addEventListener("mousedown", bgrChange);
+
+// function bgrChange() {
+//         canvas.style.backgroundColor = color;
+//         console.log("cambiar color de fondo")
+// }
+
 // let color = document.getElementById("color_select");
+
 let stage;
 let x;
 let y;
@@ -16,7 +24,7 @@ let y;
 function mouseOn(e) {
     stage = 1;
     x = e.layerX;
-    y = e.layerY;    
+    y = e.layerY;
 }
 
 function mouseMove(e) {
