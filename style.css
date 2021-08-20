@@ -15,7 +15,7 @@ body {
 .canvas_box {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0 auto;    
 }
 
 
@@ -30,7 +30,7 @@ body {
 #area {
     margin: 1em .5em;
     border: 1px solid #cdd;
-    border-radius: 1em 7em;
+    border-radius: 1em 7em;    
 }
 
 .intro {

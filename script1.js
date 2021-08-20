@@ -1,5 +1,4 @@
 import * as test from './test.js';
-// test.text();
 
 let canvas = document.getElementById("area");
 let paper = canvas.getContext("2d");
