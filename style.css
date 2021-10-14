@@ -18,7 +18,14 @@ body {
     margin: 0 auto;    
 }
 
-
+input.colorBtn  {
+    width: 4em;
+    border-radius: 2em;
+    outline: none;    
+    margin: 1em auto;
+    padding: .2em;
+    border: none;
+}
 
 #color_select {
     background-color: #000;
@@ -29,7 +36,7 @@ body {
 
 #area {
     margin: 1em .5em;
-    border: 1px solid #cdd;
+    /* border: 1px solid #cdd; */
     border-radius: 1em 7em;    
 }
 

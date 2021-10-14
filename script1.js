@@ -8,14 +8,17 @@ canvas.addEventListener("pointerdown", mouseOn);
 canvas.addEventListener("pointermove", mouseMove);
 canvas.addEventListener("pointerup", mouseUp);
 
-// canvas.addEventListener("mousedown", bgrChange);
 
-// function bgrChange() {
-//         canvas.style.backgroundColor = color;
-//         console.log("cambiar color de fondo")
-// }
+let colSel = document.getElementById('colorBtn');
+colSel.addEventListener("pointerdown", bgrChange);
 
-// let color = document.getElementById("color_select");
+
+function bgrChange() {
+        let color = document.getElementById("color_select").value;
+        canvas.style.backgroundColor = color;
+        console.log("cambiar color de fondo")
+}
+
 
 let stage;
 let x;
