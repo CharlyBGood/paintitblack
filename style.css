@@ -8,40 +8,62 @@ body {
     background-color: #000;
     color: #cdd;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 100%;    
 }
 
 .canvas_box {
+    height: 100%;
+}
+
+/* .canvas_box {
     display: flex;
     justify-content: center;
-    margin: 0 auto;    
+    margin: 0 auto;
+    width: 100%;
+} */
+
+/* #area {
+    margin: 1em .5em;
+    border: 1px solid #cdd;
+    border-radius: 1em 7em;    
+} */
+
+.intro {    
+    width: 30%;
+    margin: 0 auto;
+    padding: 1em;
 }
 
-input.colorBtn  {
-    width: 4em;
-    border-radius: 2em;
-    outline: none;    
-    margin: 1em auto;
-    padding: .2em;
-    border: none;
+.col-1 {
+    margin: 1em auto;    
 }
 
-#color_select {
+.col-1 input {
+    display: block;
+    border-radius: 3em;
     background-color: #000;
     border: none;
+    width: 50%;
     margin: 1em auto;
-    padding: 0 .3em;
+    height: 3em;
 }
 
-#area {
-    margin: 1em .5em;
-    /* border: 1px solid #cdd; */
-    border-radius: 1em 7em;    
+.colorBtn {
+    display: block;
+    margin: 0 auto;
+    background-color: #000;
+    color: #ccc;    
+    border-radius: .3em;
+    outline: none;    
+    padding: .2em;    
+    border: .11em solid #dbdbdb9c;
+    width: 60%;
+    cursor: pointer;
+    
+    
 }
 
-.intro {
+.intro p {
+    display: block;
     text-align: center;
-    font-size: 1em;
 }
-

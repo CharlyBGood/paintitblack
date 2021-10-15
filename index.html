@@ -8,17 +8,23 @@
     <title>Dibujando en Canvas</title>
 </head>
 <body>
-    <div class="intro canvas_box">
-        <p>Selecciona un color de fondo: <input type="color" id="color_select">
-            <input class="colorBtn" id="colorBtn" type="button" value="Add">
-            <br>
-        y dibuja con el puntero multicolor dentro del cuadro ♥ </p>
+    <div class="intro">
+        <div class="col-1">
+            <p for="color_select">Selecciona un color</p>
+            <input type="color" id="color_select">
+            <!-- <input class="colorBtn" id="colorBtn" type="button" value="Add"> -->
+            <button class="colorBtn" id="colorBtn">Aplicar fondo!!</button>
+        </div>
+        <div class="col-2">
+            <p>Dibuja con el puntero dentro del cuadro ♥ </p>
+        </div> 
     </div>
-    
-    <div class="canvas_box">
-        <canvas id="area" width="400" height="400"></canvas>
+    <hr>
+    <canvas id="area"></canvas>
+    <!-- <div class="canvas_box">
         
-    </div>
+        
+    </div> -->
     
 
     <script type="module" src="script1.js"></script>
