@@ -8,10 +8,12 @@ body {
     background-color: #000;
     color: #cdd;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    max-width: 100%;    
+    width: 100%;
+    height: 100%;
 }
 
-.canvas_box {
+canvas {
+    width: 100%;
     height: 100%;
 }
 
