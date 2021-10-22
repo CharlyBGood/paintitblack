@@ -14,18 +14,24 @@ window.addEventListener("resize", function() {
     canvas.height = window.innerHeight;
 })
 
+let colorPckr = document.getElementById('color_select');
 
-
-
-let colSel = document.getElementById('colorBtn');
-colSel.addEventListener("pointerdown", bgrChange);
-
+colorPckr.addEventListener("input", bgrChange);
 
 function bgrChange() {
-        let color = document.getElementById("color_select").value;
-        canvas.style.backgroundColor = color;
-        console.log("cambiar color de fondo");
+        canvas.style.backgroundColor = colorPckr.value;
+        console.log("cambiar color de fondo")
 }
+
+// let colSel = document.getElementById('colorBtn');
+// colSel.addEventListener("pointerdown", bgrChange);
+
+
+// function bgrChange() {
+//         let color = document.getElementById("color_select").value;
+//         canvas.style.backgroundColor = color;
+//         console.log("cambiar color de fondo");
+// }
 
 
 let stage;
