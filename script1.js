@@ -23,16 +23,6 @@ function bgrChange() {
         console.log("cambiar color de fondo")
 }
 
-// let colSel = document.getElementById('colorBtn');
-// colSel.addEventListener("pointerdown", bgrChange);
-
-
-// function bgrChange() {
-//         let color = document.getElementById("color_select").value;
-//         canvas.style.backgroundColor = color;
-//         console.log("cambiar color de fondo");
-// }
-
 
 let stage;
 let x;
