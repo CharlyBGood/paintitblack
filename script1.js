@@ -1,4 +1,4 @@
-import * as test from './test.js';
+// import * as test from './test.js';
 import * as test2 from './test2.js';
 
 // crear canvas 2d
@@ -11,7 +11,8 @@ let x;
 let y;
 let colorX;
 
-// inicializar tamaño de canvas
+
+// definir tamaño de canvas segun window
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -44,12 +45,12 @@ function showPckr() {
         bgrPckr.style.display = "inline-block";
 }
 
-//cambiar color a pincel 
+// cambiar color a pincel 
 let brushPckr = document.getElementById('brush_color');
 brushPckr.addEventListener("input", brushChange);
 
 function brushChange() {
-	colorX = brushPckr.value;
+    colorX = brushPckr.value;
     console.log("cambia color pincel, funciona!!")
 }
 
@@ -59,13 +60,8 @@ bshButton.addEventListener("click", showBsh);
 brushPckr.style.display = "none";
 
 function showBsh() {
-    console.log("show");
-    let hidden = true;
-    if (hidden = true) {
+        console.log("show");
         brushPckr.style.display = "inline-block";
-        hidden = false;
-        console.log(hidden);
-    }
 }
 
 
@@ -82,8 +78,9 @@ function brushMc() {
 let brushErase = document.getElementById("brush_erase");
 brushErase.addEventListener("click", eraseDraw);
 
+
 function eraseDraw() {
-    colorX = "black";
+    ctx.globalCompositeOperation = "destination-out";
     console.log("Goma de borrar seleccionada!");    
 }
 
@@ -105,10 +102,9 @@ function mouseOn(e) {
 // }
 
 function mouseMove(e) {
-    // colorX = brushPckr.value;
     if (stage == 1) {      
         drawLine(colorX, x, y, e.layerX, e.layerY, ctx);
-    } 
+    }
     x = e.layerX;
     y = e.layerY;
 }
@@ -126,4 +122,5 @@ function drawLine(color, xini, yini, xfin, yfin, ctx) {
     ctx.lineTo(xfin, yfin);
     ctx.stroke();
     ctx.closePath();
+        
 }

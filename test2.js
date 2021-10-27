@@ -1,6 +1,6 @@
 function rand(min, max) {
     let randomNumbs = min + Math.random() * (max - min);
-    console.log(randomNumbs)
+    // console.log(randomNumbs)
     return randomNumbs;
 }
 
@@ -12,4 +12,4 @@ function randColorHsl() {
     return 'hsl(' + h + ',' + s + '%,' + l + '%)';
 }
 
-export {randColorHsl};
+export {randColorHsl, rand};
