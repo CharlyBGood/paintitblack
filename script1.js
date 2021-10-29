@@ -51,6 +51,7 @@ brushPckr.addEventListener("input", brushChange);
 
 function brushChange() {
     colorX = brushPckr.value;
+    ctx.globalCompositeOperation = "source-over";
     console.log("cambia color pincel, funciona!!")
 }
 
@@ -70,7 +71,8 @@ let brushMagic = document.getElementById("brush_magic");
 brushMagic.addEventListener("click", brushMc);
 
 function brushMc() {
-    colorX = test2.randColorHsl();    
+    colorX = test2.randColorHsl();
+    ctx.globalCompositeOperation = "source-over";
     console.log("funciona pincel mágico");
 }
 
@@ -83,7 +85,6 @@ function eraseDraw() {
     ctx.globalCompositeOperation = "destination-out";
     console.log("Goma de borrar seleccionada!");    
 }
-
 
 
 // funciones para dibujar según se mueve el puntero
@@ -102,7 +103,7 @@ function mouseOn(e) {
 // }
 
 function mouseMove(e) {
-    if (stage == 1) {      
+    if (stage == 1) {
         drawLine(colorX, x, y, e.layerX, e.layerY, ctx);
     }
     x = e.layerX;
@@ -121,6 +122,5 @@ function drawLine(color, xini, yini, xfin, yfin, ctx) {
     ctx.moveTo(xini, yini);
     ctx.lineTo(xfin, yfin);
     ctx.stroke();
-    ctx.closePath();
-        
+    ctx.closePath();        
 }
