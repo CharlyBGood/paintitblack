@@ -9,12 +9,12 @@ let ctx = canvas.getContext("2d");
 let stage;
 let x;
 let y;
-let colorX;
-
+let colorX = '#f3ebdc';
 
 // definir tamaño de canvas segun window
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
 
 // añadir eventos de mouse / touch
 canvas.addEventListener("pointerdown", mouseOn);
@@ -47,9 +47,9 @@ function showPckr() {
 
 // cambiar color a pincel 
 let brushPckr = document.getElementById('brush_color');
-brushPckr.addEventListener("input", brushChange);
+brushPckr.addEventListener("input", brushColor);
 
-function brushChange() {
+function brushColor() {
     colorX = brushPckr.value;
     ctx.globalCompositeOperation = "source-over";
     console.log("cambia color pincel, funciona!!")
@@ -65,13 +65,12 @@ function showBsh() {
         brushPckr.style.display = "inline-block";
 }
 
-
 // seleccionar pincel mágico
-let brushMagic = document.getElementById("brush_magic");
+let brushMagic = document.getElementById("magic_button");
 brushMagic.addEventListener("click", brushMc);
 
 function brushMc() {
-    colorX = test2.randColorHsl();
+    colorX = test2.colorZ();
     ctx.globalCompositeOperation = "source-over";
     console.log("funciona pincel mágico");
 }
@@ -79,7 +78,6 @@ function brushMc() {
 // seleccionar goma de borrar
 let brushErase = document.getElementById("brush_erase");
 brushErase.addEventListener("click", eraseDraw);
-
 
 function eraseDraw() {
     ctx.globalCompositeOperation = "destination-out";
@@ -94,15 +92,7 @@ function mouseOn(e) {
     y = e.layerY;
 }
 
-// function mouseMove(e) {
-//     if (stage == 1) {        
-//         drawLine(test2.randColorHsl(), x, y, e.layerX, e.layerY, ctx);
-//     } 
-//     x = e.layerX;
-//     y = e.layerY;
-// }
-
-function mouseMove(e) {
+function mouseMove(e) { 
     if (stage == 1) {
         drawLine(colorX, x, y, e.layerX, e.layerY, ctx);
     }
@@ -111,8 +101,9 @@ function mouseMove(e) {
 }
 
 
-function mouseUp(e) {
-    stage = 0;    
+
+function mouseUp() {
+    stage = 0;
 }
 
 function drawLine(color, xini, yini, xfin, yfin, ctx) {
