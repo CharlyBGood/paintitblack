@@ -65,6 +65,13 @@ input[type="color"] {
     text-align: center;
 }
 
+.refresh {
+    display: block;
+    margin: 1em auto;
+    color: #b189b1;
+    background-color: #000;
+}
+
 .col-5 {
     background-color: #684668;
     

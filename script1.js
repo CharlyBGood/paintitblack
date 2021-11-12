@@ -1,4 +1,3 @@
-// import * as test from './test.js';
 import * as test2 from './test2.js';
 
 // crear canvas 2d
@@ -38,14 +37,6 @@ function bgrChange() {
         console.log("cambiar color de fondo")
 }
 
-// mostrar u ocultar colorpicker fondo
-// let bgrButton = document.getElementById("bgr_hide");
-// bgrButton.addEventListener("click", showPckr);
-// bgrPckr.style.display = "none";
-
-// function showPckr() {    
-//         bgrPckr.style.display = "inline-block";
-// }
 
 // cambiar color a pincel 
 let brushPckr = document.getElementById('brush_color');
@@ -59,16 +50,6 @@ function brushColor() {
     console.log("cambia color pincel, funciona!!")
 }
 
-// mostrar u ocultar colorpicker pincel
-// let bshButton = document.getElementById("bsh_hide");
-// bshButton.addEventListener("click", showBsh);
-// brushPckr.style.display = "none";
-
-// function showBsh() {
-//         console.log("show");
-//         brushPckr.style.display = "inline-block";
-// }
-
 // seleccionar pincel mágico
 let brushMagic = document.getElementById("magic_button");
 brushMagic.addEventListener("click", brushMc);
@@ -76,7 +57,6 @@ brushMagic.addEventListener("click", brushMc);
 function brushMc() {
     magicButton = !magicButton;
     console.log(magicButton);
-    // ctx.globalCompositeOperation = "source-over";
     console.log("funciona pincel mágico");
 }
 
@@ -96,6 +76,14 @@ sizeB.addEventListener('input', brushSize);
 
 function brushSize() {
     size = sizeB.value;
+}
+
+// recargar página 
+let reload = document.getElementById('reload');
+reload.addEventListener('click', reloadCanvas);
+
+function reloadCanvas() {
+    ctx.clearRect(0,0,canvas.width, canvas.height);
 }
 
 // funciones para dibujar según se mueve el puntero
