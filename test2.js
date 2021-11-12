@@ -6,7 +6,7 @@ function rand(min, max) {
 let colorZ = function randColorHsl() {
     let h = rand(0, 360);
     let s = rand(25, 100);
-    let l = rand(15, 50);
+    let l = rand(15, 75);
     return 'hsl(' + h + ',' + s + '%,' + l + '%)';
 }
 
