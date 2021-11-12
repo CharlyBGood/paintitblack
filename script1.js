@@ -10,7 +10,9 @@ let stage;
 let x;
 let y;
 let colorX = '#f3ebdc';
-
+let size;
+let magicBrush = false;
+let colorBrush = false;
 // definir tamaño de canvas segun window
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -29,7 +31,7 @@ window.addEventListener("resize", function() {
 
 // cambiar color de fondo al canvas
 let bgrPckr  = document.getElementById('bgr_color');
-bgrPckr .addEventListener("input", bgrChange);
+bgrPckr.addEventListener("input", bgrChange);
 
 function bgrChange() {
         canvas.style.backgroundColor = bgrPckr.value;
@@ -70,8 +72,9 @@ let brushMagic = document.getElementById("magic_button");
 brushMagic.addEventListener("click", brushMc);
 
 function brushMc() {
-    colorX = test2.colorZ();
-    ctx.globalCompositeOperation = "source-over";
+    // colorX = test2.colorZ();
+    magicBrush = !magicBrush;
+    // ctx.globalCompositeOperation = "source-over";
     console.log("funciona pincel mágico");
 }
 
@@ -84,20 +87,30 @@ function eraseDraw() {
     console.log("Goma de borrar seleccionada!");    
 }
 
+// cambiar tamaño a pincel
+let sizeB = document.getElementById('range');
+sizeB.addEventListener('input', brushSize);
 
-// funciones para dibujar según se mueve el puntero
-function mouseOn(e) {
-    stage = 1;
-    x = e.layerX;
-    y = e.layerY;
+function brushSize() {
+    size = sizeB.value;
 }
 
-function mouseMove(e) { 
+// funciones para dibujar según se mueve el puntero
+function mouseOn(ev) {
+    stage = 1;
+    x = ev.layerX;
+    y = ev.layerY;
+}
+
+function mouseMove(ev) {
     if (stage == 1) {
-        drawLine(colorX, x, y, e.layerX, e.layerY, ctx);
+        if (magicBrush) {
+            colorX = test2.colorZ();            
+        } 
+        drawLine(colorX, x, y, ev.layerX, ev.layerY, ctx);
     }
-    x = e.layerX;
-    y = e.layerY;
+    x = ev.layerX;
+    y = ev.layerY;
 }
 
 
@@ -109,7 +122,7 @@ function mouseUp() {
 function drawLine(color, xini, yini, xfin, yfin, ctx) {
     ctx.beginPath();
     ctx.strokeStyle = color;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = size;
     ctx.moveTo(xini, yini);
     ctx.lineTo(xfin, yfin);
     ctx.stroke();
