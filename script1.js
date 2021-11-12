@@ -11,17 +11,16 @@ let x;
 let y;
 let colorX = '#f3ebdc';
 let size;
-let magicBrush = false;
-let colorBrush = false;
+let magicButton = false;
 // definir tamaño de canvas segun window
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 
 // añadir eventos de mouse / touch
-canvas.addEventListener("pointerdown", mouseOn);
-canvas.addEventListener("pointermove", mouseMove);
-canvas.addEventListener("pointerup", mouseUp);
+canvas.addEventListener("pointerdown", pointerDown);
+canvas.addEventListener("pointermove", pointerMove);
+canvas.addEventListener("pointerup", pointerUp);
 
 // redimensionar canvas según viewport
 window.addEventListener("resize", function() {
@@ -54,6 +53,8 @@ brushPckr.addEventListener("input", brushColor);
 function brushColor() {
     colorX = brushPckr.value;
     ctx.globalCompositeOperation = "source-over";
+    magicButton = false;
+    console.log(magicButton);
     console.log("cambia color pincel, funciona!!")
 }
 
@@ -72,8 +73,8 @@ let brushMagic = document.getElementById("magic_button");
 brushMagic.addEventListener("click", brushMc);
 
 function brushMc() {
-    // colorX = test2.colorZ();
-    magicBrush = !magicBrush;
+    magicButton = !magicButton;
+    console.log(magicButton);
     // ctx.globalCompositeOperation = "source-over";
     console.log("funciona pincel mágico");
 }
@@ -84,7 +85,8 @@ brushErase.addEventListener("click", eraseDraw);
 
 function eraseDraw() {
     ctx.globalCompositeOperation = "destination-out";
-    console.log("Goma de borrar seleccionada!");    
+    console.log("Goma de borrar seleccionada!");
+    magicButton = false;     
 }
 
 // cambiar tamaño a pincel
@@ -96,16 +98,18 @@ function brushSize() {
 }
 
 // funciones para dibujar según se mueve el puntero
-function mouseOn(ev) {
+function pointerDown(ev) {
     stage = 1;
     x = ev.layerX;
     y = ev.layerY;
 }
 
-function mouseMove(ev) {
+function pointerMove(ev) {
     if (stage == 1) {
-        if (magicBrush) {
-            colorX = test2.colorZ();            
+        if (magicButton) {
+            colorX = test2.colorZ();
+            ctx.globalCompositeOperation = "source-over";
+            console.log(magicButton);
         } 
         drawLine(colorX, x, y, ev.layerX, ev.layerY, ctx);
     }
@@ -115,7 +119,7 @@ function mouseMove(ev) {
 
 
 
-function mouseUp() {
+function pointerUp() {
     stage = 0;
 }
 
