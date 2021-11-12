@@ -12,6 +12,7 @@ let y;
 let colorX = '#f3ebdc';
 let size;
 let magicButton = false;
+
 // definir tamaño de canvas segun window
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -38,13 +39,13 @@ function bgrChange() {
 }
 
 // mostrar u ocultar colorpicker fondo
-let bgrButton = document.getElementById("bgr_hide");
-bgrButton.addEventListener("click", showPckr);
-bgrPckr.style.display = "none";
+// let bgrButton = document.getElementById("bgr_hide");
+// bgrButton.addEventListener("click", showPckr);
+// bgrPckr.style.display = "none";
 
-function showPckr() {    
-        bgrPckr.style.display = "inline-block";
-}
+// function showPckr() {    
+//         bgrPckr.style.display = "inline-block";
+// }
 
 // cambiar color a pincel 
 let brushPckr = document.getElementById('brush_color');
@@ -59,14 +60,14 @@ function brushColor() {
 }
 
 // mostrar u ocultar colorpicker pincel
-let bshButton = document.getElementById("bsh_hide");
-bshButton.addEventListener("click", showBsh);
-brushPckr.style.display = "none";
+// let bshButton = document.getElementById("bsh_hide");
+// bshButton.addEventListener("click", showBsh);
+// brushPckr.style.display = "none";
 
-function showBsh() {
-        console.log("show");
-        brushPckr.style.display = "inline-block";
-}
+// function showBsh() {
+//         console.log("show");
+//         brushPckr.style.display = "inline-block";
+// }
 
 // seleccionar pincel mágico
 let brushMagic = document.getElementById("magic_button");
