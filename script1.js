@@ -78,7 +78,7 @@ function brushSize() {
     size = sizeB.value;
 }
 
-// recargar página 
+// recargar canvas 
 let reload = document.getElementById('reload');
 reload.addEventListener('click', reloadCanvas);
 
@@ -91,6 +91,9 @@ function pointerDown(ev) {
     stage = 1;
     x = ev.layerX;
     y = ev.layerY;
+    x = ev.offsetX;
+    y = ev.offsetY;
+    console.log(ev);
 }
 
 function pointerMove(ev) {
@@ -104,6 +107,9 @@ function pointerMove(ev) {
     }
     x = ev.layerX;
     y = ev.layerY;
+    x = ev.offsetX;
+    y = ev.offsetY;
+    
 }
 
 
