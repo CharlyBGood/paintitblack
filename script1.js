@@ -18,9 +18,9 @@ canvas.height = window.innerHeight;
 
 
 // añadir eventos de mouse / touch
-canvas.addEventListener("pointerdown", pointerDown);
-canvas.addEventListener("pointermove", pointerMove);
-canvas.addEventListener("pointerup", pointerUp);
+canvas.addEventListener("pointerdown", pointerDown, false);
+canvas.addEventListener("pointermove", pointerMove, false);
+canvas.addEventListener("pointerup", pointerUp, false);
 
 // redimensionar canvas según viewport
 window.addEventListener("resize", function() {
@@ -91,9 +91,8 @@ function pointerDown(ev) {
     stage = 1;
     x = ev.layerX;
     y = ev.layerY;
-    x = ev.offsetX;
-    y = ev.offsetY;
-    console.log(ev);
+    ev.preventDefault();
+    console.log(ev.target)
 }
 
 function pointerMove(ev) {
@@ -107,9 +106,7 @@ function pointerMove(ev) {
     }
     x = ev.layerX;
     y = ev.layerY;
-    x = ev.offsetX;
-    y = ev.offsetY;
-    
+    ev.preventDefault();
 }
 
 

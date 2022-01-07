@@ -22,6 +22,7 @@ canvas {
     height: 100%;
     touch-action: none;
     border-top: 1px solid #493939;
+    position: absolute;
 }
 
 .container {
