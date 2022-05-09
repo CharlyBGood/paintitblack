@@ -141,3 +141,5 @@ function drawLine(color, xini, yini, xfin, yfin, ctx) {
 //         navbar.classList.remove('sticky');
 //     }
 // }
+
+// -------------------
