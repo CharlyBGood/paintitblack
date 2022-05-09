@@ -145,7 +145,7 @@ a {
 .description {
   display: flex;
   flex-direction: column;
-  margin: 11% auto;
+  margin-top: 3%;
 }
 
 .description-title {
@@ -160,8 +160,8 @@ a {
 }
 
 .description-title span {
-  font-size: 2em;
-  padding: 1em;
+  font-size: 1.5em;
+  padding: .5em;
   color: #df2947;
 }
 
@@ -177,21 +177,19 @@ a {
 
 .description-title a:hover, .description-title:active {
   box-shadow: none;
-  letter-spacing: 2em;
   transition: 1s;
 }
 
 .refresh {
   display: block;
-  margin: 0 auto;
-  padding: 0.3em;
+  margin: .3em auto;  
   background-color: #000;
   border: none;
 }
 
 .refresh svg, .refresh span {
   color: #df2947;
-  font-size: 1.5em;
+  font-size: 1.2em;
   cursor: pointer;
   border-radius: 3em;
 }
