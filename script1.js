@@ -124,3 +124,20 @@ function drawLine(color, xini, yini, xfin, yfin, ctx) {
     ctx.stroke();
     ctx.closePath();        
 }
+
+
+// NAVBAR 
+
+// window.onscroll = function() {smoothFunc()};
+
+// let navbar = document.getElementById('container');
+
+// let sticky = navbar.offsetTop;
+
+// function smoothFunc() {
+//     if (window.pageYOffset) {
+//         navbar.classList.add('sticky');
+//     } else {
+//         navbar.classList.remove('sticky');
+//     }
+// }

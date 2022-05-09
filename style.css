@@ -50,7 +50,14 @@ canvas {
   /* flex-wrap: nowrap; */
   /* background-color: #684668; */
   border-radius: 0.3em;
+ 
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 
 .container div {
   width: 85%;
@@ -137,7 +144,7 @@ a {
 .description {
   display: flex;
   flex-direction: column;
-  margin: 1em auto;
+  margin: 11% auto;
 }
 
 .description-title {
@@ -163,14 +170,10 @@ a {
   cursor: pointer;
 }
 
-.description-title a:hover {
+.description-title a:hover, .description-title:active {
   box-shadow: none;
   letter-spacing: 2em;
   transition: 1s;
-}
-
-.description-title:active {
-    box-shadow: none;
 }
 
 .refresh {
@@ -181,11 +184,15 @@ a {
   border: none;
 }
 
-.refresh svg {
+.refresh svg, .refresh span {
   color: #df2947;
-  font-size: 1.1em;
+  font-size: 1.5em;
   cursor: pointer;
   border-radius: 3em;
+}
+
+button.refresh:active {
+    box-shadow: none;
 }
 
 input[type="range"] {
