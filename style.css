@@ -53,11 +53,11 @@ canvas {
  
 }
 
-.sticky {
+/* .sticky {
     position: fixed;
     top: 0;
     width: 100%;
-  }
+  } */
 
 .container div {
   width: 85%;
@@ -135,6 +135,7 @@ a {
   text-decoration: none;
 }
 
+
 /* p:hover {
   font-size: 1em;
   text-shadow: 1px 2px 1px #0ae967;
@@ -166,9 +167,13 @@ a {
 
 .description-title:hover {
   font-size: 1em;
-  text-shadow: 1px 2px 1px #0ae967;
+  text-shadow: 2px 2px 2px #48534c;
   cursor: pointer;
+  transition: 1s;
+  color: #000;
 }
+
+
 
 .description-title a:hover, .description-title:active {
   box-shadow: none;
