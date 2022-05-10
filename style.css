@@ -139,7 +139,6 @@ a {
 .description {
   display: flex;
   flex-direction: column;
-  margin-top: 3%;
 }
 
 .description-title {
@@ -175,10 +174,14 @@ a {
 }
 
 .refresh {
-  display: block;
-  margin: .3em auto;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
   background-color: #000;
-  border: none;
+  border: none;  
+  margin: .5em;
+  border-radius: .3em;
+  cursor: pointer;
 }
 
 .refresh svg, .refresh span {
@@ -186,10 +189,18 @@ a {
   font-size: 1.2em;
   cursor: pointer;
   border-radius: 3em;
+  margin: .3em;
 }
 
 button.refresh:active {
     box-shadow: none;
+}
+
+.description-buttons {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 input[type="range"] {
@@ -265,3 +276,5 @@ input[type="range"]::-webkit-slider-thumb {
   }
   
 }
+
+
