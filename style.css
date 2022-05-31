@@ -69,7 +69,7 @@ canvas {
   width: 75%;
   margin: 0 auto;
   border-radius: 0.3em;
-  gap: .5em;
+  gap: 0.5em;
 }
 
 .container div {
@@ -191,7 +191,7 @@ a {
 
 .description-title span {
   font-size: 1.5em;
-  padding: .5em;
+  padding: 0.5em;
   color: #df2947;
 }
 
@@ -227,18 +227,19 @@ a {
       -ms-flex-align: center;
           align-items: center;   
   background-color: #000;
-  border: none;  
-  margin: .5em;
-  border-radius: .3em;
+  border: none;
+  margin: 0.5em;
+  border-radius: 0.3em;
   cursor: pointer;
 }
 
-.refresh svg, .refresh span {
+.refresh svg,
+.refresh span {
   color: #df2947;
   font-size: 1.2em;
   cursor: pointer;
   border-radius: 3em;
-  margin: .3em;
+  margin: 0.3em;
 }
 
 button.refresh:active {
@@ -289,12 +290,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 @media screen and (max-width: 858px) {
-  body {
-    overflow: auto;
-  }
-
-  p, a {
-    font-size: .8em;
+  p,
+  a {
+    font-size: 0.8em;
   }
 
   .container {
@@ -339,9 +337,6 @@ input[type="range"]::-webkit-slider-thumb {
 
   input[type="range"] {
     width: 5em;
-    margin: 0 .3em;
+    margin: 0 0.3em;
   }
-  
 }
-
-
