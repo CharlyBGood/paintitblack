@@ -1,69 +1,88 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/a9d601c6bd.js"
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
       crossorigin="anonymous"
-    ></script>
-    <title lang="en">Paint it black</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" href="normalize.css" />
+      referrerpolicy="no-referrer"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>PaintItBlackIII</title>
   </head>
   <body>
-    <main class="full-page-container"></main>
-
     <div id="container" class="container">
-      <div class="col-1">
-        <button id="bgr_hide">
+      <div class="cols col-1">
+        <button id="bgr_color_btn">
           <i class="fas fa-fill-drip"></i>
-          <input type="color" id="bgr_color" />
+          <span>&#127912;</span>
+          <input type="color" id="bgr_color_input" />
         </button>
       </div>
-      <div class="col-2">
-        <button id="bsh_hide">
+      <div class="cols col-2">
+        <button id="brush_color_btn">
           <i class="fas fa-paint-brush"></i>
-          <input type="color" id="brush_color" />
+          <span>&#127912;</span>
+          <input type="color" id="brush_color_input" />
         </button>
       </div>
-      <div class="col-3">
+      <div class="cols col-3">
         <button id="magic_button" class="brush_magic">
-          <i class="fas fa-hat-wizard"></i>
+          <span id="alien">👽</span>
+          <span>🧙</span>
+          <!-- <i class="fas fa-hat-wizard"></i> -->
         </button>
       </div>
-      <div class="col-4">
-        <button id="brush_erase" class="brush_erase">
+      <div class="cols col-4">
+        <button id="eraser_btn" class="brush_erase">
           <i class="fas fa-eraser"></i>
         </button>
       </div>
-      <div class="col-5">
-        <p>grosor</p>
+      <div class="cols col-5">
+        <div class="brush-width-container">
+          <span>&#128396;</span>
+          <a>♥</a>
+          <span style="font-size: 1.1em">&#128396;</span>
+          <a style="font-size: 1.1em">♥</a>
+          <span style="font-size: 1.2em">&#128396;</span>
+          <a style="font-size: 1.2em">♥</a>
+        </div>
         <input type="range" id="range" min="1" max="6" value="1" />
       </div>
     </div>
-    <div class="description">
-      <div class="description-title">
-        <button class="description-title">
-          <span>&#8595;</span>
-          <a>👽 Intenta dibujar con varios dedos a la vez ♥ </a>
-          <span>&#8595;</span>
-        </button>
-      </div>
-      <div class="description-buttons">
-        <button id="reload" class="refresh">
+    <div class="controls">
+      <div class="controls-buttons">
+        <span id="click-me-info">&#127752;</span>
+        <button id="clear_canvas" class="action-btn">
           <span>&#128465;</span>
         </button>
-        <button class="refresh">
+        <button id="undo_trace" class="action-btn">
           <span>&#8630;</span>
-        </button>  
+        </button>
+        <!-- <button id="redo_trace" class="action-btn">
+          <span>&#8631;</span>
+        </button> -->
+        <button id="save_draw" class="action-btn">
+          <span>&#129095;</span>
+        </button>
+        <p>
+          x
+          <a
+            href="https://github.com/CharlyBGood?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Charly BGood
+            <i class="fa-brands fa-github"></i>
+          </a>
+        </p>
       </div>
-      
     </div>
+    <canvas id="canvas"></canvas>
 
-    <canvas id="area"></canvas>
-
-    <script type="module" src="script1.js"></script>
+    <script src="main.js"></script>
   </body>
 </html>
