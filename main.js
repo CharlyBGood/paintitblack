@@ -1,7 +1,3 @@
-let infoBtn = document.getElementById("click-me-info");
-let alienFriend = document.getElementById("alien");
-
-// animate info button for message
 const animationBeat = {
   keyframe: [
     { transform: "scale(1)" },
@@ -13,10 +9,6 @@ const animationBeat = {
     iterations: Infinity,
   },
 };
-
-infoBtn.animate(animationBeat.keyframe, animationBeat.options);
-alienFriend.animate(animationBeat.keyframe, animationBeat.options);
-infoBtn.addEventListener("click", magikInfo);
 
 function magikInfo() {
   alert("Prueba dibujando con varios dedos a la vez!!");
@@ -67,6 +59,8 @@ let brushColor = document.getElementById("brush_color_input");
 // brush handler for magikPaintingcolor
 let magikBtn = document.getElementById("magic_button");
 let magikPainting = false;
+
+magikBtn.animate(animationBeat.keyframe, animationBeat.options);
 
 // eraser button
 let eraserBtn = document.getElementById("eraser_btn");
