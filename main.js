@@ -1,3 +1,5 @@
+let website = document.getElementById("website")
+
 const animationBeat = {
   keyframe: [
     { transform: "scale(1)" },
@@ -62,6 +64,8 @@ let magikPainting = false;
 
 magikBtn.animate(animationBeat.keyframe, animationBeat.options);
 
+website.animate(animationBeat.keyframe, animationBeat.options);
+
 // eraser button
 let eraserBtn = document.getElementById("eraser_btn");
 
@@ -80,6 +84,7 @@ const magikColor = () => {
 
 // select "magik random color" for the brush!
 magikBtn.addEventListener("click", () => {
+  alert("prueba dibujando con varios dedos a la vez");
   magikPainting = !magikPainting;
   ctx.globalCompositeOperation = "source-over";
 });
