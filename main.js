@@ -16,6 +16,23 @@ function magikInfo() {
   alert("Prueba dibujando con varios dedos a la vez!!");
 }
 
+let undoStack = [];
+let redoStack = [];
+
+function saveState() {
+  undoStack.push(canvas.toDataURL());
+  redoStack = [];
+}
+
+function restoreState(state) {
+  let img = new Image();
+  img.src = state;
+  img.onload = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // clear the canvas
+    ctx.drawImage(img, 0, 0); // draw the saved state
+  };
+}
+
 // start to work on canvas
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d", { willReadFrequently: true });
@@ -35,10 +52,14 @@ function brushSize() {
 // define canvas width and height according window object
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+saveState();
+
 window.addEventListener("resize", function () {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  saveState();
 });
+
 
 // color and background-color buttons behaviour
 let bgColorBtn = document.getElementById("bgr_color_btn");
@@ -84,7 +105,6 @@ const magikColor = () => {
 
 // select "magik random color" for the brush!
 magikBtn.addEventListener("click", () => {
-  alert("prueba dibujando con varios dedos a la vez");
   magikPainting = !magikPainting;
   ctx.globalCompositeOperation = "source-over";
 });
@@ -115,34 +135,30 @@ clearBtn.addEventListener("click", clearCanvas);
 
 function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  restore_arr = [];
-  index = -1;
+  saveState();
 }
 
 // undo button to get a step back on the drow !!
 let undoBtn = document.getElementById("undo_trace");
 
-let restore_arr = [];
-let index = -1;
-let deletedTrace = [];
-
 undoBtn.addEventListener("click", () => {
-  if (index <= 0) {
-    clearCanvas();
-    index = -1;
-  } else {
-    index--;
-    restore_arr.pop();
-    ctx.putImageData(restore_arr[index], 0, 0);
+  if (undoStack.length > 1) {
+    let currentState = undoStack.pop(); // get the last state
+    redoStack.push(currentState); // save the current state
+    restoreState(undoStack[undoStack.length - 1]); // restore the state
   }
 });
 
 // redo button to recover the undo trace
-// let redoBtn = document.getElementById("redo_trace");
+let redoBtn = document.getElementById("redo_trace");
 
-// redoBtn.addEventListener("click", () => {
-//   console.log(deletedTrace[index])
-// });
+redoBtn.addEventListener("click", () => {
+  if (redoStack.length > 0) {
+    let currentState = redoStack.pop();
+    undoStack.push(currentState);
+    restoreState(currentState);
+  }
+});
 
 // save draw when done
 let saveBtn = document.getElementById("save_draw");
@@ -164,9 +180,12 @@ function downloadImage(data, filename = "untitled.png") {
 // add mouse and touch events on canvas to draw
 canvas.addEventListener("pointerdown", pointerDown, false);
 canvas.addEventListener("pointermove", pointerMove, false);
-canvas.addEventListener("pointerup", pointerUp, false);
+canvas.addEventListener("pointerup", () => {
+  saveState();
+  stage = 0;
+}, false);
 
-// boolean value to update on pointer event true/false
+
 let stage;
 let x;
 let y;
@@ -184,15 +203,9 @@ function pointerMove(e) {
       paintColor = magikColor();
     }
     drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
+    x = e.offsetX;
+    y = e.offsetY;
   }
-  x = e.offsetX;
-  y = e.offsetY;
-}
-
-function pointerUp(e) {
-  stage = 0;
-  restore_arr.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-  index += 1;
 }
 
 // function to draw on canvas
