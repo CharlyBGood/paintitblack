@@ -80,6 +80,7 @@ canvas {
   touch-action: none;
 }
 
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -254,6 +255,27 @@ input[type="color"] {
   padding: 0 0.3em;
 }
 
+#cursor-glow {
+  position: absolute;
+  width: 20px;
+  /* Tamaño del glow */
+  height: 20px;
+  border-radius: 50%;
+  /* Forma circular */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.1) 70%);
+  pointer-events: none;
+  /* Ignorar eventos del mouse */
+  mix-blend-mode: screen;
+  /* Mezcla visual con el canvas */
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+/* Ocultar el glow cuando no se está dibujando */
+#cursor-glow.hidden {
+  opacity: 0;
+}
+
+
 @media screen and (max-width: 750px) {
   /* p,
   a {
@@ -280,6 +302,7 @@ input[type="color"] {
     -ms-flex-direction: column;
     flex-direction: column;
   }
+
   .cols button {
     height: 2em;
   }
@@ -310,6 +333,7 @@ input[type="color"] {
     font-size: 0.6em;
     margin: 0 0 1.2em 0;
   }
+
   input[type="range"] {
     width: 5em;
     margin: 0 0.3em;
