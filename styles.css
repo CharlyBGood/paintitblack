@@ -247,7 +247,8 @@ input[type="color"] {
   background-color: var(--bgrColor);
   color: var(--redWords);
   font-size: 1.5em;
-  border-radius: 100%;
+  border: none;
+  /* border-radius: 100%; */
   /* margin: 0.3em;
   border: 1px solid red; */
   padding: 0 0.3em;

@@ -3,11 +3,11 @@ let website = document.getElementById("website")
 const animationBeat = {
   keyframe: [
     { transform: "scale(1)" },
-    { transform: "scale(1.2)" },
+    { transform: "scale(1.1)" },
     { transform: "scale(1)" },
   ],
   options: {
-    duration: 1000,
+    duration: 3000,
     iterations: Infinity,
   },
 };
