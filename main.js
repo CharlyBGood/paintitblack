@@ -12,10 +12,6 @@ const animationBeat = {
   },
 };
 
-function magikInfo() {
-  alert("Prueba dibujando con varios dedos a la vez!!");
-}
-
 let undoStack = [];
 let redoStack = [];
 
@@ -40,46 +36,12 @@ let ctx = canvas.getContext("2d", { willReadFrequently: true });
 // sixe of the brush
 let size;
 
-const cursorGlow = document.getElementById("cursor-glow");
-
-
-
-// function moveGlow(e) {
-//   const canvasRect = canvas.getBoundingClientRect();
-
-//   const adjustedX = e.clientX - canvasRect.left;
-//   const adjustedY = e.clientY - canvasRect.top;
-//   cursorGlow.style.transform = `translate(${adjustedX}px, ${adjustedY}px)`;
-
-//   cursorGlow.classList.remove("hidden");
-  
-//   if (magikPainting) {
-//     cursorGlow.style.backgroundColor = magikColor();
-//   } else {
-//     cursorGlow.style.backgroundColor = paintColor;
-//   }
-// }
-
-// function showGlow() {
-//   cursorGlow.classList.remove("hidden");
-// }
-
-// function hideGlow() {
-//   cursorGlow.classList.add("hidden");
-// }
-
-// canvas.addEventListener("pointermove", moveGlow, false);
-// canvas.addEventListener("pointerdown", showGlow, false);
-// canvas.addEventListener("pointerup", hideGlow, false);
-
 // create variable for events on brush size / range input
 let increaseBrush = document.getElementById("range");
 increaseBrush.addEventListener("input", brushSize);
 
 function brushSize() {
   size = increaseBrush.value;
-  // cursorGlow.style.width = `${size}px`;
-  // cursorGlow.style.height = `${size}px`;
 }
 
 // define canvas width and height according window object

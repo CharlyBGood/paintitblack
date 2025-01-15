@@ -239,9 +239,13 @@ input[type="color"] {
   -ms-flex-pack: center;
   justify-content: space-evenly;
   align-items: center;
-  width: 80%;
+  width: 100%;
   /* gap: 1em; */
   margin: 0 auto;
+}
+
+.btn_txt {
+  font-size: .7em;
 }
 
 .action-btn {
