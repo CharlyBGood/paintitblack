@@ -44,33 +44,33 @@ const cursorGlow = document.getElementById("cursor-glow");
 
 
 
-function moveGlow(e) {
-  const canvasRect = canvas.getBoundingClientRect();
+// function moveGlow(e) {
+//   const canvasRect = canvas.getBoundingClientRect();
 
-  const adjustedX = e.clientX - canvasRect.left;
-  const adjustedY = e.clientY - canvasRect.top;
-  cursorGlow.style.transform = `translate(${adjustedX}px, ${adjustedY}px)`;
+//   const adjustedX = e.clientX - canvasRect.left;
+//   const adjustedY = e.clientY - canvasRect.top;
+//   cursorGlow.style.transform = `translate(${adjustedX}px, ${adjustedY}px)`;
 
-  cursorGlow.classList.remove("hidden");
+//   cursorGlow.classList.remove("hidden");
   
-  if (magikPainting) {
-    cursorGlow.style.backgroundColor = magikColor();
-  } else {
-    cursorGlow.style.backgroundColor = paintColor;
-  }
-}
+//   if (magikPainting) {
+//     cursorGlow.style.backgroundColor = magikColor();
+//   } else {
+//     cursorGlow.style.backgroundColor = paintColor;
+//   }
+// }
 
-function showGlow() {
-  cursorGlow.classList.remove("hidden");
-}
+// function showGlow() {
+//   cursorGlow.classList.remove("hidden");
+// }
 
-function hideGlow() {
-  cursorGlow.classList.add("hidden");
-}
+// function hideGlow() {
+//   cursorGlow.classList.add("hidden");
+// }
 
-canvas.addEventListener("pointermove", moveGlow, false);
-canvas.addEventListener("pointerdown", showGlow, false);
-canvas.addEventListener("pointerup", hideGlow, false);
+// canvas.addEventListener("pointermove", moveGlow, false);
+// canvas.addEventListener("pointerdown", showGlow, false);
+// canvas.addEventListener("pointerup", hideGlow, false);
 
 // create variable for events on brush size / range input
 let increaseBrush = document.getElementById("range");
