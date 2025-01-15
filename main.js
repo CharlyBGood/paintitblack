@@ -78,8 +78,8 @@ increaseBrush.addEventListener("input", brushSize);
 
 function brushSize() {
   size = increaseBrush.value;
-  cursorGlow.style.width = `${size}px`;
-  cursorGlow.style.height = `${size}px`;
+  // cursorGlow.style.width = `${size}px`;
+  // cursorGlow.style.height = `${size}px`;
 }
 
 // define canvas width and height according window object
