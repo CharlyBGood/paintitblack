@@ -23,7 +23,7 @@ let undoStack = [];
 let redoStack = [];
 
 function saveState() {
-  const backgroundColor = bgColorInput.value || "black";
+  const backgroundColor = bgColorInput.value;
   ctx.save();
   ctx.globalCompositeOperation = "destination-over";
   ctx.fillStyle = backgroundColor;
@@ -46,7 +46,7 @@ function restoreState(state) {
 // start to work on canvas
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d", { willReadFrequently: true });
-ctx.fillStyle = "black";
+ctx.fillStyle = bgColorInput.value;
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 
@@ -76,12 +76,13 @@ window.addEventListener("resize", function () {
 // color and background-color buttons behaviour
 
 bgColorInput.addEventListener("input", () => {
-  bgColorBtn.style.backgroundColor = bgColorInput.value;
-  canvas.style.backgroundColor = bgColorInput.value;
   const color = bgColorInput.value;
+  bgColorBtn.style.backgroundColor = color;
+
+  canvas.style.backgroundColor = color;
   ctx.fillStyle = color;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  saveState();
+  ctx.restore();
 });
 
 // brush color handler
@@ -135,8 +136,10 @@ brushColor.addEventListener("input", () => {
 eraserBtn.addEventListener("click", eraseSelection);
 
 function eraseSelection() {
-  ctx.globalCompositeOperation = "destination-out";
+  ctx.globalCompositeOperation = "source-over";
+  paintColor = bgColorInput.value;
   magikPainting = false;
+  saveState();
 }
 
 // clear the canvas to start over again
@@ -174,7 +177,7 @@ redoBtn.addEventListener("click", () => {
 let saveBtn = document.getElementById("save_draw");
 saveBtn.addEventListener("click", saveDraw);
 
-function saveDraw(a) {
+function saveDraw() {
   const backgroundColor = bgColorInput.value || "black";
   ctx.save();
   ctx.globalCompositeOperation = "destination-over";
