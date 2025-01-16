@@ -12,10 +12,24 @@ const animationBeat = {
   },
 };
 
+let bgColorBtn = document.getElementById("bgr_color_btn");
+let bgColorInput = document.getElementById("bgr_color_input");
+
+bgColorBtn.addEventListener("click", () => {
+  bgColorInput.click();
+});
+
 let undoStack = [];
 let redoStack = [];
 
 function saveState() {
+  const backgroundColor = bgColorInput.value || "black";
+  ctx.save();
+  ctx.globalCompositeOperation = "destination-over";
+  ctx.fillStyle = backgroundColor;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.restore();
+
   undoStack.push(canvas.toDataURL());
   redoStack = [];
 }
@@ -32,6 +46,9 @@ function restoreState(state) {
 // start to work on canvas
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d", { willReadFrequently: true });
+ctx.fillStyle = "black";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 
 // sixe of the brush
 let size;
@@ -57,16 +74,14 @@ window.addEventListener("resize", function () {
 
 
 // color and background-color buttons behaviour
-let bgColorBtn = document.getElementById("bgr_color_btn");
-let bgColorInput = document.getElementById("bgr_color_input");
-
-bgColorBtn.addEventListener("click", () => {
-  bgColorInput.click();
-});
 
 bgColorInput.addEventListener("input", () => {
   bgColorBtn.style.backgroundColor = bgColorInput.value;
   canvas.style.backgroundColor = bgColorInput.value;
+  const color = bgColorInput.value;
+  ctx.fillStyle = color;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  saveState();
 });
 
 // brush color handler
@@ -160,6 +175,12 @@ let saveBtn = document.getElementById("save_draw");
 saveBtn.addEventListener("click", saveDraw);
 
 function saveDraw(a) {
+  const backgroundColor = bgColorInput.value || "black";
+  ctx.save();
+  ctx.globalCompositeOperation = "destination-over";
+  ctx.fillStyle = backgroundColor;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.restore();
   let img = canvas.toDataURL("img/png", 1.0);
   downloadImage(img, "my_draw.png");
 }
@@ -176,8 +197,10 @@ function downloadImage(data, filename = "untitled.png") {
 canvas.addEventListener("pointerdown", pointerDown, false);
 canvas.addEventListener("pointermove", pointerMove, false);
 canvas.addEventListener("pointerup", () => {
-  saveState();
-  stage = 0;
+  if (stage === 1) {
+    saveState();
+    stage = 0;
+  }
 }, false);
 
 
