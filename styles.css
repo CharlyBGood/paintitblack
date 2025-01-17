@@ -162,6 +162,10 @@ canvas {
   flex: 3;
 }
 
+/* .col-6 {
+  flex: 1;
+} */
+
 input[type="range"] {
   -ms-appearance: none;
   -moz-appearance: none;

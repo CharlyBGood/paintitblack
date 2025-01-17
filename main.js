@@ -1,5 +1,34 @@
 let website = document.getElementById("website")
 
+// ----------------------------------------
+// Create an audio context and a source node for the audio 
+function alienSound() {
+  let context = new window.AudioContext(),
+    osc = context.createOscillator(),
+    osc2 = context.createOscillator(),
+    gain = context.createGain(),
+    w = window.innerWidth,
+    h = window.innerHeight;
+
+  osc.frequency = 400;
+  osc.connect(context.destination);
+  osc.start(0);
+
+  gain.gain.value = 100;
+  gain.connect(osc.frequency);
+
+  osc2.frequency.value = 5;
+  osc2.connect(gain);
+  osc2.start(0);
+
+  document.addEventListener("mousemove", function (e) {
+    osc.frequency.value = e.pageX / w * 1000;
+    osc2.frequency.value = e.pageY / h * 10;
+  });
+}
+
+// ----------------------------------------
+
 const animationBeat = {
   keyframe: [
     { transform: "scale(1)" },
@@ -23,13 +52,6 @@ let undoStack = [];
 let redoStack = [];
 
 function saveState() {
-  const backgroundColor = bgColorInput.value;
-  ctx.save();
-  ctx.globalCompositeOperation = "destination-over";
-  ctx.fillStyle = backgroundColor;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.restore();
-
   undoStack.push(canvas.toDataURL());
   redoStack = [];
 }
@@ -46,8 +68,7 @@ function restoreState(state) {
 // start to work on canvas
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d", { willReadFrequently: true });
-ctx.fillStyle = bgColorInput.value;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+canvas.style.backgroundColor = bgColorInput.value || "black";
 
 
 // sixe of the brush
@@ -78,15 +99,11 @@ window.addEventListener("resize", function () {
 bgColorInput.addEventListener("input", () => {
   const color = bgColorInput.value;
   bgColorBtn.style.backgroundColor = color;
-
   canvas.style.backgroundColor = color;
-  ctx.fillStyle = color;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.restore();
 });
 
 // brush color handler
-let paintColor = "#fb2359"; //default color on start
+let paintColor = "#fff"; //default color on start
 let brushColBtn = document.getElementById("brush_color_btn");
 let brushColor = document.getElementById("brush_color_input");
 
@@ -117,6 +134,7 @@ const magikColor = () => {
 // select "magik random color" for the brush!
 magikBtn.addEventListener("click", () => {
   magikPainting = !magikPainting;
+  // alienSound();
   ctx.globalCompositeOperation = "source-over";
 });
 
@@ -126,10 +144,10 @@ brushColBtn.addEventListener("click", () => {
 });
 
 brushColor.addEventListener("input", () => {
+
   brushColBtn.style.backgroundColor = brushColor.value;
   paintColor = brushColor.value;
   magikPainting = false;
-  ctx.globalCompositeOperation = "source-over";
 });
 
 // use de eraser to erase selected parts of the drawing !!
@@ -223,6 +241,7 @@ function pointerMove(e) {
     if (magikPainting) {
       paintColor = magikColor();
     }
+    // ctx.globalCompositeOperation = "destination-out";
     drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
     x = e.offsetX;
     y = e.offsetY;
