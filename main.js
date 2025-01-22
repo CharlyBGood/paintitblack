@@ -29,6 +29,25 @@ function alienSound() {
 
 // ----------------------------------------
 
+function getCanvasCoordinates(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+  
+  let x, y;
+  
+  // Check if it's a touch event
+  if (e.touches && e.touches[0]) {
+      x = (e.touches[0].clientX - rect.left) * scaleX;
+      y = (e.touches[0].clientY - rect.top) * scaleY;
+  } else {
+      x = (e.clientX - rect.left) * scaleX;
+      y = (e.clientY - rect.top) * scaleY;
+  }
+  
+  return { x, y };
+}
+
 const animationBeat = {
   keyframe: [
     { transform: "scale(1)" },
@@ -231,8 +250,11 @@ let y;
 
 function pointerDown(e) {
   stage = 1;
-  x = e.offsetX;
-  y = e.offsetY;
+  const coords = getCanvasCoordinates(e);
+  // x = e.offsetX;
+  // y = e.offsetY;
+  x = coords.x;
+  y = coords.y;
   e.preventDefault();
 }
 
@@ -241,8 +263,9 @@ function pointerMove(e) {
     if (magikPainting) {
       paintColor = magikColor();
     }
-    // ctx.globalCompositeOperation = "destination-out";
-    drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
+    const coords = getCanvasCoordinates(e);
+    drawLine(paintColor, x, y, coords.x, coords.y, ctx);
+    // drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
     x = e.offsetX;
     y = e.offsetY;
   }
