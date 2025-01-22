@@ -254,8 +254,8 @@ function pointerDown(e) {
   //   x = e.offsetX;
   //   y = e.offsetY;
   // }
-  // x = e.offsetX;
-  // y = e.offsetY;  
+  x = e.offsetX;
+  y = e.offsetY;  
 }
 
 function pointerMove(e) {
