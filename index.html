@@ -11,7 +11,10 @@
       referrerpolicy="no-referrer"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="stylesheet" href="styles.css" />
     <link rel="shortcut icon" href="charlybgood.ico" type="image/x-icon" />
     <title>PaintItBlack</title>
@@ -19,24 +22,25 @@
   <body>
     <div id="container" class="container">
       <div class="cols col-1">
-        <button id="bgr_color_btn">
+        <button>
           <i class="fas fa-fill-drip"></i>
-          <span>&#127912;</span>
-          <input type="color" id="bgr_color_input" />
         </button>
+        <span id="bgr_color_btn">&#127912;</span>
+        <input type="color" id="bgr_color_input" />
       </div>
       <div class="cols col-2">
-        <button id="brush_color_btn">
+        <button id="select_brush">
           <i class="fas fa-paint-brush"></i>
-          <span>&#127912;</span>
-          <input type="color" id="brush_color_input" />
         </button>
+        <span id="brush_color_btn">&#127912;</span>
+        <input type="color" id="brush_color_input" />
       </div>
       <div class="cols col-3">
-        <button id="magic_button" class="brush_magic">
+        <button id="magic_button" class="brush_magic"></button>
+        <div>
           <span id="alien">👽</span>
           <span>🧙</span>
-        </button>        
+        </div>
       </div>
       <div class="cols col-4">
         <button id="eraser_btn" class="brush_erase">

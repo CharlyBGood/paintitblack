@@ -49,6 +49,8 @@ span {
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
   text-size-adjust: none;
+  text-align: center;
+  touch-action: none;
   /* color: var(--redWords); */
 }
 
@@ -97,7 +99,7 @@ canvas {
   flex-direction: row;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center;
+  align-items: flex-start;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;

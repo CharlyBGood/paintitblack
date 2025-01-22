@@ -138,17 +138,25 @@ magikBtn.addEventListener("click", () => {
   ctx.globalCompositeOperation = "source-over";
 });
 
+let select_brush = document.getElementById("select_brush");
+
 // select different color for brush with color picker
 brushColBtn.addEventListener("click", () => {
   brushColor.click();
 });
 
 brushColor.addEventListener("input", () => {
-
   brushColBtn.style.backgroundColor = brushColor.value;
   paintColor = brushColor.value;
   magikPainting = false;
 });
+
+select_brush.addEventListener("click", () => {
+  paintColor = brushColor.value;
+  console.log(brushColor.value);
+  magikPainting = false;
+  saveState();
+})
 
 // use de eraser to erase selected parts of the drawing !!
 eraserBtn.addEventListener("click", eraseSelection);
