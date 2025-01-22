@@ -215,38 +215,73 @@ function downloadImage(data, filename = "untitled.png") {
 }
 
 // add mouse and touch events on canvas to draw
-canvas.addEventListener("pointerdown", pointerDown, false);
-canvas.addEventListener("pointermove", pointerMove, false);
-canvas.addEventListener("pointerup", pointerUp, false);
+// canvas.addEventListener("pointerdown", pointerDown, false);
+// canvas.addEventListener("pointermove", pointerMove, false);
+// canvas.addEventListener("pointerup", pointerUp, false);
 
-function pointerUp() {
-  if (stage === 1) {
-    saveState();
-    stage = 0;
-  }
-}
+canvas.addEventListener("touchstart", pointerDown, false);
+canvas.addEventListener("touchmove", pointerMove, false);
+canvas.addEventListener("touchend", pointerUp, false);
 
+canvas.addEventListener("mousedown", pointerDown, false);
+canvas.addEventListener("mousemove", pointerMove, false);
+canvas.addEventListener("mouseup", pointerUp, false);
 
 let stage;
 let x;
 let y;
 
 function pointerDown(e) {
-  stage = 1;
-  x = e.offsetX;
-  y = e.offsetY;
   e.preventDefault();
+  stage = 1;
+  if (e.type === "touchstart") {
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    x = touch.clientX - rect.left;
+    y = touch.clientY - rect.top;
+  } else {
+    x = e.offsetX;
+    y = e.offsetY;
+  }
+  // x = e.offsetX;
+  // y = e.offsetY;  
 }
 
 function pointerMove(e) {
-  if (stage == 1) {
-    if (magikPainting) {
-      paintColor = magikColor();
-    }
-    // ctx.globalCompositeOperation = "destination-out";
-    drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
-    x = e.offsetX;
-    y = e.offsetY;
+  if (stage !== 1) return;
+  let currentX, currentY;
+  if (e.type === "touchmove") {
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    currentX = touch.clientX - rect.left;
+    currentY = touch.clientY - rect.top;
+  } else {
+    currentX = e.offsetX;
+    currentY = e.offsetY;
+  }
+
+  if (magikPainting) {
+    paintColor = magikColor();
+  }
+
+  drawLine(paintColor, x, y, currentX, currentY, ctx);
+  x = currentX;
+  y = currentY;
+
+  // if (stage == 1) {
+  //   if (magikPainting) {
+  //     paintColor = magikColor();
+  //   }    
+  //   drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
+  //   x = e.offsetX;
+  //   y = e.offsetY;
+  // }
+}
+
+function pointerUp() {
+  if (stage === 1) {
+    saveState();
+    stage = 0;
   }
 }
 
