@@ -162,7 +162,7 @@ select_brush.addEventListener("click", () => {
 eraserBtn.addEventListener("click", eraseSelection);
 
 function eraseSelection() {
-  ctx.globalCompositeOperation = "source-over";
+  ctx.globalCompositeOperation = "destination-out";
   paintColor = bgColorInput.value;
   magikPainting = false;
   saveState();
