@@ -146,12 +146,15 @@ brushColBtn.addEventListener("click", () => {
 });
 
 brushColor.addEventListener("input", () => {
-  brushColBtn.style.backgroundColor = brushColor.value;
+  ctx.globalCompositeOperation = "source-over";
+  select_brush.style.backgroundColor = brushColor.value;
   paintColor = brushColor.value;
   magikPainting = false;
 });
 
 select_brush.addEventListener("click", () => {
+  ctx.globalCompositeOperation = "source-over";
+  select_brush.style.backgroundColor = brushColor.value;
   paintColor = brushColor.value;
   console.log(brushColor.value);
   magikPainting = false;

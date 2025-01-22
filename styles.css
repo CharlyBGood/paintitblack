@@ -228,7 +228,7 @@ input[type="color"] {
   background: none;
   border-radius: 0.3em;
   padding: 0.11em;
-  margin: 0.3em auto;
+  /* margin: 0.3em auto; */
   flex: 0;
   opacity: 0;
 }
@@ -255,7 +255,7 @@ input[type="color"] {
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  /* gap: 1em; */
+  gap: 1em;
   margin: 0 auto;
 }
 
@@ -326,6 +326,11 @@ input[type="color"] {
   .col-5 {
     display: flex;
     flex-direction: column;
+  }
+
+  .controls {
+    margin: 0;
+    padding: 0;
   }
 
   .brush-width-container {
