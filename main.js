@@ -230,13 +230,13 @@ canvas.addEventListener("pointerdown", pointerDown, false);
 canvas.addEventListener("pointermove", pointerMove, false);
 canvas.addEventListener("pointerup", pointerUp, false);
 
-canvas.addEventListener("touchstart", pointerDown, false);
-canvas.addEventListener("touchmove", pointerMove, false);
-canvas.addEventListener("touchend", pointerUp, false);
+// canvas.addEventListener("touchstart", pointerDown, false);
+// canvas.addEventListener("touchmove", pointerMove, false);
+// canvas.addEventListener("touchend", pointerUp, false);
 
-canvas.addEventListener("mousedown", pointerDown, false);
-canvas.addEventListener("mousemove", pointerMove, false);
-canvas.addEventListener("mouseup", pointerUp, false);
+// canvas.addEventListener("mousedown", pointerDown, false);
+// canvas.addEventListener("mousemove", pointerMove, false);
+// canvas.addEventListener("mouseup", pointerUp, false);
 
 let stage;
 let x;
