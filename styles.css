@@ -8,9 +8,12 @@
   --blue: #12c6e6d0;
   --btnBlack: #212121;
   --btnShadow: #a39f9f;
-  --redWords: #df2947;
+  --redWords: #cabfc1;
   --gray: #48534c;
   --rangeColor: #e8dcfa;
+  --background-multicolor: linear-gradient(0deg, #000000 0%, #f7f7f7 100%),
+    linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);
+  ;
 }
 
 *,
@@ -46,7 +49,7 @@ span {
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
   text-size-adjust: none;
-  color: var(--redWords);
+  /* color: var(--redWords); */
 }
 
 body {
@@ -147,8 +150,7 @@ canvas {
 
 .col-3 button {
   /* background-color: var(--red); */
-  background: linear-gradient(0deg, #000000 0%, #f7f7f7 100%),
-    linear-gradient(90deg, red, yellow, lime, cyan, blue, magenta, red);
+  background: var(--background-multicolor);
   /* background-blend-mode: color-dodge, normal; */
   background-blend-mode: overlay;
 }
@@ -165,6 +167,10 @@ canvas {
 /* .col-6 {
   flex: 1;
 } */
+
+#website {
+  color: var(--redWords);
+}
 
 input[type="range"] {
   -ms-appearance: none;
@@ -263,7 +269,13 @@ input[type="color"] {
   padding: 0 0.3em;
 }
 
+.brush-width-container span,
+.brush-width-container a {
+  color: var(--red);
+}
 
+
+/* -------------- MEDIA QUERIES -------------------- */
 
 @media screen and (max-width: 750px) {
 
