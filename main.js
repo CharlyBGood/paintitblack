@@ -226,9 +226,9 @@ function downloadImage(data, filename = "untitled.png") {
 }
 
 // add mouse and touch events on canvas to draw
-// canvas.addEventListener("pointerdown", pointerDown, false);
-// canvas.addEventListener("pointermove", pointerMove, false);
-// canvas.addEventListener("pointerup", pointerUp, false);
+canvas.addEventListener("pointerdown", pointerDown, false);
+canvas.addEventListener("pointermove", pointerMove, false);
+canvas.addEventListener("pointerup", pointerUp, false);
 
 canvas.addEventListener("touchstart", pointerDown, false);
 canvas.addEventListener("touchmove", pointerMove, false);
