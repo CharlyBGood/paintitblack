@@ -29,25 +29,6 @@ function alienSound() {
 
 // ----------------------------------------
 
-function getCanvasCoordinates(e) {
-  const rect = canvas.getBoundingClientRect();
-  const scaleX = canvas.width / rect.width;
-  const scaleY = canvas.height / rect.height;
-  
-  let x, y;
-  
-  // Check if it's a touch event
-  if (e.touches && e.touches[0]) {
-      x = (e.touches[0].clientX - rect.left) * scaleX;
-      y = (e.touches[0].clientY - rect.top) * scaleY;
-  } else {
-      x = (e.clientX - rect.left) * scaleX;
-      y = (e.clientY - rect.top) * scaleY;
-  }
-  
-  return { x, y };
-}
-
 const animationBeat = {
   keyframe: [
     { transform: "scale(1)" },
@@ -236,12 +217,14 @@ function downloadImage(data, filename = "untitled.png") {
 // add mouse and touch events on canvas to draw
 canvas.addEventListener("pointerdown", pointerDown, false);
 canvas.addEventListener("pointermove", pointerMove, false);
-canvas.addEventListener("pointerup", () => {
+canvas.addEventListener("pointerup", pointerUp, false);
+
+function pointerUp() {
   if (stage === 1) {
     saveState();
     stage = 0;
   }
-}, false);
+}
 
 
 let stage;
@@ -250,11 +233,8 @@ let y;
 
 function pointerDown(e) {
   stage = 1;
-  const coords = getCanvasCoordinates(e);
-  // x = e.offsetX;
-  // y = e.offsetY;
-  x = coords.x;
-  y = coords.y;
+  x = e.offsetX;
+  y = e.offsetY;
   e.preventDefault();
 }
 
@@ -263,9 +243,8 @@ function pointerMove(e) {
     if (magikPainting) {
       paintColor = magikColor();
     }
-    const coords = getCanvasCoordinates(e);
-    drawLine(paintColor, x, y, coords.x, coords.y, ctx);
-    // drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
+    // ctx.globalCompositeOperation = "destination-out";
+    drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
     x = e.offsetX;
     y = e.offsetY;
   }
