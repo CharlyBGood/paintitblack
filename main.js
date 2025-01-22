@@ -69,6 +69,7 @@ function restoreState(state) {
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d", { willReadFrequently: true });
 canvas.style.backgroundColor = bgColorInput.value || "black";
+canvas.style.touchAction = 'none';
 
 
 // sixe of the brush
