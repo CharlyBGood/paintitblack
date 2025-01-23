@@ -61,7 +61,7 @@ body {
     "Lucida Sans", Arial, sans-serif;
   width: 100%;
   height: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 p,
@@ -80,7 +80,7 @@ span {
 
 canvas {
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
   touch-action: none;
   -ms-touch-action: none;  
 }
