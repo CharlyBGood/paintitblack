@@ -51,8 +51,8 @@ span {
   text-size-adjust: none;
   text-align: center;
   /* color: var(--redWords); */
-  -webkit-user-select: none;  
-  -ms-user-select: none;  
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -139,6 +139,13 @@ canvas {
 .col-4 {
   flex: 2;
 }
+
+/* #toggle3D {
+  height: 1em;
+  padding: .5em;
+  width: 65%;
+  font-size: .9em;
+} */
 
 .fa-solid,
 .fas {

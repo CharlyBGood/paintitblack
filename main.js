@@ -1,31 +1,40 @@
 let website = document.getElementById("website")
 
+// ------------------ 3D MODE ------------------
+
+// Initialize Three.js
+
+// -----------------------------------
+
 // ----------------------------------------
 // Create an audio context and a source node for the audio 
-function alienSound() {
-  let context = new window.AudioContext(),
-    osc = context.createOscillator(),
-    osc2 = context.createOscillator(),
-    gain = context.createGain(),
-    w = window.innerWidth,
-    h = window.innerHeight;
 
-  osc.frequency = 400;
-  osc.connect(context.destination);
-  osc.start(0);
+// function alienSound() {
+//   let context = new window.AudioContext(),
+//     osc = context.createOscillator(),
+//     osc2 = context.createOscillator(),
+//     gain = context.createGain(),
+//     w = window.innerWidth,
+//     h = window.innerHeight;
 
-  gain.gain.value = 100;
-  gain.connect(osc.frequency);
+//   osc.frequency = 400;
+//   osc.connect(context.destination);
+//   osc.start(0);
 
-  osc2.frequency.value = 5;
-  osc2.connect(gain);
-  osc2.start(0);
+//   gain.gain.value = 100;
+//   gain.connect(osc.frequency);
 
-  document.addEventListener("mousemove", function (e) {
-    osc.frequency.value = e.pageX / w * 1000;
-    osc2.frequency.value = e.pageY / h * 10;
-  });
-}
+//   osc2.frequency.value = 5;
+//   osc2.connect(gain);
+//   osc2.start(0);
+
+//   document.addEventListener("mousemove", function (e) {
+//     osc.frequency.value = e.pageX / w * 1000;
+//     osc2.frequency.value = e.pageY / h * 10;
+//   });
+// }
+
+// let soundOn = false;
 
 // ----------------------------------------
 
@@ -133,7 +142,6 @@ const magikColor = () => {
 // select "magik random color" for the brush!
 magikBtn.addEventListener("click", () => {
   magikPainting = !magikPainting;
-  // alienSound();
   ctx.globalCompositeOperation = "source-over";
 });
 
@@ -145,6 +153,7 @@ brushColBtn.addEventListener("click", () => {
 });
 
 brushColor.addEventListener("input", () => {
+
   ctx.globalCompositeOperation = "source-over";
   select_brush.style.backgroundColor = brushColor.value;
   paintColor = brushColor.value;
@@ -164,7 +173,7 @@ select_brush.addEventListener("click", () => {
 eraserBtn.addEventListener("click", eraseSelection);
 
 function eraseSelection() {
-  ctx.globalCompositeOperation = "destination-out";  
+  ctx.globalCompositeOperation = "destination-out";
   paintColor = bgColorInput.value;
   magikPainting = false;
   saveState();
@@ -207,15 +216,6 @@ let saveBtn = document.getElementById("save_draw");
 saveBtn.addEventListener("click", saveDraw);
 
 function saveDraw() {
-  // const backgroundColor = bgColorInput.value || "black";
-  // ctx.save();
-  // ctx.globalCompositeOperation = "destination-over";
-  // ctx.fillStyle = backgroundColor;
-  // ctx.fillRect(0, 0, canvas.width, canvas.height);
-  // ctx.restore();
-  // let img = canvas.toDataURL("img/png", 1.0);
-  // downloadImage(img, "my_draw.png");
-
   const tempCanvas = document.createElement("canvas");
   const tempCtx = tempCanvas.getContext("2d");
   tempCanvas.width = canvas.width;
