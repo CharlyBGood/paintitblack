@@ -41,11 +41,19 @@ const animationBeat = {
   },
 };
 
+// color and background-color buttons behaviour
 let bgColorBtn = document.getElementById("bgr_color_btn");
+let bgColorSel = document.getElementById("bgr_color_selector");
 let bgColorInput = document.getElementById("bgr_color_input");
 
-bgColorBtn.addEventListener("click", () => {
+bgColorSel.addEventListener("click", () => {
   bgColorInput.click();
+});
+
+bgColorInput.addEventListener("input", () => {
+  const color = bgColorInput.value;
+  bgColorBtn.style.backgroundColor = color;
+  canvas.style.backgroundColor = color;
 });
 
 let undoStack = [];
@@ -92,15 +100,6 @@ window.addEventListener("resize", function () {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   saveState();
-});
-
-
-// color and background-color buttons behaviour
-
-bgColorInput.addEventListener("input", () => {
-  const color = bgColorInput.value;
-  bgColorBtn.style.backgroundColor = color;
-  canvas.style.backgroundColor = color;
 });
 
 // brush color handler
