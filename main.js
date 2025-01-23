@@ -207,13 +207,27 @@ let saveBtn = document.getElementById("save_draw");
 saveBtn.addEventListener("click", saveDraw);
 
 function saveDraw() {
+  // const backgroundColor = bgColorInput.value || "black";
+  // ctx.save();
+  // ctx.globalCompositeOperation = "destination-over";
+  // ctx.fillStyle = backgroundColor;
+  // ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // ctx.restore();
+  // let img = canvas.toDataURL("img/png", 1.0);
+  // downloadImage(img, "my_draw.png");
+
+  const tempCanvas = document.createElement("canvas");
+  const tempCtx = tempCanvas.getContext("2d");
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+
   const backgroundColor = bgColorInput.value || "black";
-  ctx.save();
-  ctx.globalCompositeOperation = "destination-over";
-  ctx.fillStyle = backgroundColor;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.restore();
-  let img = canvas.toDataURL("img/png", 1.0);
+  tempCtx.fillStyle = backgroundColor;
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+  tempCtx.drawImage(canvas, 0, 0);
+
+  const img = tempCanvas.toDataURL("image/png", 1.0);
   downloadImage(img, "my_draw.png");
 }
 
@@ -263,8 +277,6 @@ function pointerDown(e) {
   const coords = getCanvasCoordinates(e);
   x = coords[0].x;
   y = coords[0].y;
-  // x = e.offsetX;
-  // y = e.offsetY;
 }
 
 function pointerMove(e) {
@@ -278,10 +290,6 @@ function pointerMove(e) {
       x = coord.x;
       y = coord.y;
     });
-
-    // drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
-    // x = e.offsetX;
-    // y = e.offsetY;
   }
 }
 
