@@ -79,7 +79,6 @@ let ctx = canvas.getContext("2d", { willReadFrequently: true });
 canvas.style.backgroundColor = bgColorInput.value || "black";
 canvas.style.touchAction = 'none';
 
-
 // sixe of the brush
 let size;
 
@@ -165,7 +164,7 @@ select_brush.addEventListener("click", () => {
 eraserBtn.addEventListener("click", eraseSelection);
 
 function eraseSelection() {
-  ctx.globalCompositeOperation = "destination-out";
+  ctx.globalCompositeOperation = "destination-out";  
   paintColor = bgColorInput.value;
   magikPainting = false;
   saveState();
@@ -184,6 +183,7 @@ function clearCanvas() {
 let undoBtn = document.getElementById("undo_trace");
 
 undoBtn.addEventListener("click", () => {
+  ctx.globalCompositeOperation = "source-over";
   if (undoStack.length > 1) {
     let currentState = undoStack.pop(); // get the last state
     redoStack.push(currentState); // save the current state
