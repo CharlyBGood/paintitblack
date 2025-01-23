@@ -235,21 +235,54 @@ let stage;
 let x;
 let y;
 
+function getCanvasCoordinates(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width;
+  const scaleY = canvas.height / rect.height;
+
+  if (e.touches) {
+    const touches = [];
+    for (let i = 0; i < e.touches.length; i++) {
+      const touch = e.touches[i];
+      touches.push({
+        x: (touch.clientX - rect.left) * scaleX,
+        y: (touch.clientY - rect.top) * scaleY,
+      });
+    }
+    return touches;
+  } else {
+    return [{
+      x: (e.clientX - rect.left) * scaleX,
+      y: (e.clientY - rect.top) * scaleY,
+    }];
+  }
+}
+
 function pointerDown(e) {
   e.preventDefault();
   stage = 1;
-  x = e.offsetX;
-  y = e.offsetY;
+  const coords = getCanvasCoordinates(e);
+  x = coords[0].x;
+  y = coords[0].y;
+  // x = e.offsetX;
+  // y = e.offsetY;
 }
 
 function pointerMove(e) {
   if (stage == 1) {
+    const coords = getCanvasCoordinates(e);
     if (magikPainting) {
       paintColor = magikColor();
     }
-    drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
-    x = e.offsetX;
-    y = e.offsetY;
+    coords.forEach((coord) => {
+      drawLine(paintColor, x, y, coord.x, coord.y, ctx);
+      x = coord.x;
+      y = coord.y;
+    });
+
+    // drawLine(paintColor, x, y, e.offsetX, e.offsetY, ctx);
+    // x = e.offsetX;
+    // y = e.offsetY;
   }
 }
 
